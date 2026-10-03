@@ -1,0 +1,17 @@
+PÁGINA YURI SOARES — VERSÃO PARA DOWNLOAD
+
+1. Extraia todos os arquivos do ZIP para uma mesma pasta.
+2. Abra index.html no navegador para começar pela apresentação.
+3. quiz.html contém apenas as perguntas, a barra de progresso e a animação de análise.
+4. Ao concluir o quiz, o navegador abre diagnostico.html com o resultado das respostas.
+5. O resultado tem apenas o botão amarelo “Quero meu acesso”.
+
+DESTINO DO BOTÃO
+O link da oferta Lastlink está definido em config.js como YURI_ACCESS_URL.
+Em 02/10/2026, a página da Lastlink informou que o produto não está aceitando compras.
+Ative a oferta e teste o checkout antes de publicar esta versão da página.
+
+Os arquivos funcionam localmente. As fontes do Google são opcionais: sem internet, o navegador usa Arial.
+Não há envio de respostas, cadastro, pagamento ou integração de análise externa.
+A animação de aproximadamente 2 segundos acompanha a preparação do resultado calculado na própria página.
+A versão online anterior não foi alterada.
