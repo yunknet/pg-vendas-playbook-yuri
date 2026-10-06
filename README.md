@@ -43,10 +43,10 @@ docker run --rm -p 8080:80 pg-vendas-playbook-yuri
 
 Abra http://localhost:8080.
 
-## Pop-ups de depoimentos e compras
+## Cartões ilustrativos
 
-Prévia local: `http://localhost:5173/?popup-demo=1`. Os nomes e comentários dessa demonstração são fictícios, identificados no cartão e disponíveis somente em localhost.
+A página exibe 20 exemplos de compra e 20 exemplos de feedback, com nomes e textos fictícios. Todos os cartões trazem a identificação visível “EXEMPLO ILUSTRATIVO”; não representam compradores, depoimentos ou transações reais. O botão “Prévia: próximo exemplo” aparece apenas em localhost com `?popup-demo=1`.
 
-A lista `socialProofItems`, em `landing.js`, começa vazia. Preencha apenas com depoimentos autênticos autorizados ou compras reais com data e nome autorizado para divulgação. Não publique e-mails, identificadores de pagamento ou dados pessoais adicionais.
+Cada cartão aparece após 30 segundos, desaparece em 5 segundos e não se repete durante o carregamento. O botão de fechar encerra as notificações daquela visita.
 
-Um cartão aparece a cada 30 segundos e permanece por 5 segundos; cada item aparece uma vez por carregamento. O botão de fechar encerra as notificações da visita. A exibição pausa em abas ocultas ou durante navegação por teclado. Compras com mais de uma hora são descartadas e os minutos são calculados pela data original. A integração automática com compras não está conectada.
+Substitua os exemplos por depoimentos autorizados e compras verificadas antes de apresentar os cartões como resultados reais. Não divulgue e-mails, identificadores de pagamento ou outros dados pessoais.

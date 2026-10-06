@@ -44,15 +44,15 @@ const demoReviews = [
 ];
 // Exemplos fictícios: nunca habilitados fora da prévia local identificada.
 const demoTimestamp = new Date().toISOString();
-const popupItems = socialProofDemo ? demoNames.flatMap((name, i) => [
+const popupItems = demoNames.flatMap((name, i) => [
   {type:'purchase', name, purchasedAt:demoTimestamp},
   {type:'review', name:demoNames[(i + 7) % demoNames.length], text:demoReviews[i]}
-]) : socialProofItems;
+]);
 
 if (popupItems.length) {
   const region = document.createElement('aside');
   region.className = 'social-proof';
-  region.setAttribute('aria-label', socialProofDemo ? 'Demonstração de notificações' : 'Novidades do Playbook');
+  region.setAttribute('aria-label', 'Exemplos ilustrativos do Playbook');
   region.hidden = true;
   const dismiss = document.createElement('button');
   dismiss.type = 'button'; dismiss.className = 'social-proof-close';
@@ -83,12 +83,12 @@ if (popupItems.length) {
     if (!item) return;
     live.replaceChildren();
     const label = document.createElement('span'); label.className = 'social-proof-label';
-    label.textContent = socialProofDemo ? 'DEMONSTRAÇÃO · DADOS FICTÍCIOS' : item.type === 'review' ? 'QUEM LEU, CONTOU' : 'COMPRA RECENTE';
+    label.textContent = 'EXEMPLO ILUSTRATIVO · ' + (item.type === 'review' ? 'FEEDBACK' : 'COMPRA');
     const message = document.createElement('p');
     if (item.type === 'review') message.textContent = '“' + item.text + '”';
     else {
       const minutes = Math.floor((Date.now() - Date.parse(item.purchasedAt)) / 60000);
-      message.textContent = item.name + (minutes < 1 ? ' acabou de comprar o Playbook.' : ' comprou o Playbook há ' + minutes + ' min.');
+      message.textContent = 'Exemplo: ' + item.name + ' adquiriu o Playbook.';
     }
     const person = document.createElement('div'); person.className = 'social-proof-person';
     const avatar = document.createElement('span'); avatar.className = 'social-proof-avatar'; avatar.setAttribute('aria-hidden', 'true');
