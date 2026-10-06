@@ -42,3 +42,11 @@ docker run --rm -p 8080:80 pg-vendas-playbook-yuri
 ```
 
 Abra http://localhost:8080.
+
+## Pop-ups de depoimentos e compras
+
+Prévia local: `http://localhost:5173/?popup-demo=1`. Os nomes e comentários dessa demonstração são fictícios, identificados no cartão e disponíveis somente em localhost.
+
+A lista `socialProofItems`, em `landing.js`, começa vazia. Preencha apenas com depoimentos autênticos autorizados ou compras reais com data e nome autorizado para divulgação. Não publique e-mails, identificadores de pagamento ou dados pessoais adicionais.
+
+Um cartão aparece a cada 30 segundos e permanece por 5 segundos; cada item aparece uma vez por carregamento. O botão de fechar encerra as notificações da visita. A exibição pausa em abas ocultas ou durante navegação por teclado. Compras com mais de uma hora são descartadas e os minutos são calculados pela data original. A integração automática com compras não está conectada.

@@ -71,3 +71,68 @@
 .sales-page .offer-price{margin:0 0 18px;line-height:1.3}
 .sales-page .offer-price span{display:block;font-size:.8rem;color:#c2cfd7;margin-bottom:6px}
 .sales-page .offer-price strong{display:block;font-family:Manrope,Arial,sans-serif;font-size:clamp(2rem,4vw,2.6rem);font-weight:700;letter-spacing:-1px;color:var(--gold)}
+
+/* Oferta: atração de clientes e processo comercial. */
+.sales-page .hero{grid-template-columns:minmax(0,1.25fr) minmax(0,1);gap:5%;padding-top:40px}
+.sales-page .hero h1{font-size:clamp(2.35rem,4.2vw,4.2rem);max-width:720px;letter-spacing:-2px;line-height:1.1}
+.sales-page .hero h1 em{display:block}
+.sales-page .hero-copy{padding:20px 0 48px}
+.sales-page .hero-proof{color:#c2cfd7;font-size:.88rem;max-width:420px;margin-bottom:24px}
+.sales-page .hero .intro{margin-bottom:18px;max-width:540px}
+.sales-page .hero .portrait{min-height:600px}
+.sales-page .portrait-caption p{max-width:280px;font-size:1.1rem}
+.sales-page .button{gap:20px}
+.sales-page .button span{font-size:1.25rem}
+.sales-page .micro{line-height:1.6}
+.sales-page .pain-section{background:#f4f6f7}
+.sales-page .pain-section h2{max-width:950px}
+.pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:44px}
+.pain-grid article{padding:28px;background:white;border-top:3px solid var(--gold)}
+.pain-grid article>span{font-size:.7rem;letter-spacing:1.5px;color:#916719}
+.pain-grid h3{font-size:1.3rem;line-height:1.4;margin:22px 0 16px;letter-spacing:-.5px}
+.pain-grid p{font-size:.94rem;color:#526672;margin:0}
+.pain-close{font-weight:600;font-size:1.15rem;margin:32px 0 0}
+.growth-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8%}
+.growth-section>div>p:last-child{color:#526672}
+.growth-steps h3{font-size:1.15rem;line-height:1.4;margin:0 0 8px}
+.growth-steps li{padding:22px 0;gap:20px}
+.growth-steps li:first-child{padding-top:0}
+.sales-page .author{background:#f4f6f7}
+.sales-page .tool-intro h2{font-size:clamp(2rem,3.3vw,3.2rem);line-height:1.2}
+.sales-page .bonus-release{font-size:.82rem;margin:22px 0 0;color:#c8d5dd}
+.sales-page .final-cta>p:not(.eyebrow){max-width:640px;margin-left:auto;margin-right:auto}
+@media(max-width:1000px){.pain-grid{gap:14px}.pain-grid article{padding:22px}.sales-page .hero .portrait{min-height:560px}}
+@media(max-width:800px){
+ .sales-page .hero{grid-template-columns:1fr;padding-top:12px;gap:0}
+ .sales-page .hero h1{font-size:clamp(2.15rem,7.4vw,3.5rem);letter-spacing:-1.3px;max-width:650px}
+ .sales-page .hero-copy{padding:24px 0 30px}
+ .sales-page .hero .portrait{min-height:0;height:clamp(340px,70vw,480px)}
+ .sales-page .hero-proof{max-width:100%}
+ .pain-grid{grid-template-columns:1fr;margin-top:28px;gap:16px}
+ .pain-grid h3{margin-top:14px}
+ .pain-grid h3 br{display:none}
+ .growth-section{grid-template-columns:1fr;gap:28px}
+ .sales-page .tool-intro h2 br{display:initial}
+ .sales-page .hero .button{padding:17px 16px;font-size:.95rem}
+}
+
+/* Depoimentos e compras: um cartão discreto por vez. */
+.social-proof{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));left:20px;width:min(370px,calc(100vw - 40px));z-index:50;background:#fff;color:var(--ink);border:1px solid #dce3e7;border-bottom:3px solid var(--gold);border-radius:18px;padding:22px;box-shadow:0 10px 35px #061d2b25;animation:proof-enter .25s ease-out}
+.social-proof-label{display:block;padding-right:28px;font-size:.62rem;font-weight:700;letter-spacing:1.1px;color:#85601f;line-height:1.6}
+.social-proof p{font-size:.9rem;line-height:1.6;margin:12px 0 16px;overflow-wrap:anywhere}
+.social-proof-person{display:flex;align-items:center;gap:10px;font-size:.8rem}
+.social-proof-avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#f7f0e2;color:#785413;font-size:.7rem;font-weight:700;flex-shrink:0}
+.social-proof-close{position:absolute;right:7px;top:7px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:#526672;font-size:1.4rem}
+.social-proof-close:hover{background:#f4f6f7}
+@keyframes proof-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.social-proof{left:12px;bottom:max(12px,env(safe-area-inset-bottom));width:calc(100vw - 24px);padding:18px}.social-proof-close{width:44px;height:44px;top:0;right:0}}
+@media(prefers-reduced-motion:reduce){.social-proof{animation:none}}
+.proof-preview-button{position:fixed;right:12px;top:12px;z-index:60;background:#fff;color:#183342;border:1px solid #dce3e7;border-radius:8px;padding:10px 14px;font-size:12px;box-shadow:0 4px 16px #061d2b18}
+
+/* Cartão compacto para leitura rápida no celular. */
+.social-proof{width:min(310px,calc(100vw - 24px));padding:12px 14px;border-radius:12px;left:12px;bottom:max(12px,env(safe-area-inset-bottom));border-bottom-width:2px}
+.social-proof-label{font-size:.55rem;letter-spacing:.5px;line-height:1.5;padding-right:30px}
+.social-proof p{font-size:.8rem;line-height:1.4;margin:8px 20px 9px 0}
+.social-proof-person{gap:7px;font-size:.72rem}
+.social-proof-avatar{width:25px;height:25px;font-size:.6rem}
+.social-proof-close{width:44px;height:44px;top:0;right:0;font-size:1.2rem}
