@@ -43,10 +43,6 @@ docker run --rm -p 8080:80 pg-vendas-playbook-yuri
 
 Abra http://localhost:8080.
 
-## Cartões ilustrativos
+## Avisos da página de vendas
 
-A página exibe 20 exemplos de compra e 20 exemplos de feedback, com nomes e textos fictícios. Todos os cartões trazem a identificação visível “EXEMPLO ILUSTRATIVO”; não representam compradores, depoimentos ou transações reais. O botão “Prévia: próximo exemplo” aparece apenas em localhost com `?popup-demo=1`.
-
-Cada cartão aparece após 30 segundos, desaparece em 5 segundos e não se repete durante o carregamento. O botão de fechar encerra as notificações daquela visita.
-
-Substitua os exemplos por depoimentos autorizados e compras verificadas antes de apresentar os cartões como resultados reais. Não divulgue e-mails, identificadores de pagamento ou outros dados pessoais.
+A página exibe 20 mensagens curtas sobre recursos reais do Playbook. Um aviso aparece a cada 30 segundos e desaparece em 5 segundos. O visitante pode desativar os avisos com o botão de fechar. Não são exibidas notificações de compras ou depoimentos sem dados verificáveis.

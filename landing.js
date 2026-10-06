@@ -13,104 +13,82 @@ const chapters = [
 const list=document.getElementById('chapters');
 chapters.forEach(([title,range,description],i)=>{const d=document.createElement('details');const s=document.createElement('summary');const n=document.createElement('span');n.className='chapter-number';n.textContent=String(i+1).padStart(2,'0');s.append(n,document.createTextNode(title));const p=document.createElement('p');p.textContent=description;const r=document.createElement('span');r.className='chapter-range';r.textContent='CAPÍTULOS '+range;p.append(r);d.append(s,p);list.append(d)});
 
-// Adicione somente depoimentos autorizados e compras reais nesta lista.
-// Compra: {type:'purchase', name:'Nome autorizado', purchasedAt:'data ISO real'}
-// Depoimento: {type:'review', name:'Nome autorizado', text:'Depoimento original'}
-const socialProofItems = [];
-const socialProofDemo = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)
-  && new URLSearchParams(location.search).get('popup-demo') === '1';
-const demoNames = ['Mariana Oliveira','Rafael Almeida','Camila Santos','Lucas Ferreira','Juliana Ribeiro','Pedro Martins','Ana Costa','Bruno Silva','Larissa Souza','Gabriel Rocha','Beatriz Lima','Felipe Gomes','Carolina Alves','Diego Pereira','Amanda Barbosa','Thiago Mendes','Fernanda Dias','Gustavo Carvalho','Patrícia Nunes','Rodrigo Azevedo'];
-const demoReviews = [
- 'Os scripts deram um rumo às minhas conversas.',
- 'Consegui organizar melhor os temas do meu Instagram.',
- 'Gostei de saber por onde começar os estudos.',
- 'As perguntas do diagnóstico são bem práticas.',
- 'Consultar pelo celular facilita minha rotina.',
- 'O checklist ajuda a revisar a proposta.',
- 'O plano de conteúdo me deu novas ideias.',
- 'Ficou mais claro como retomar um contato.',
- 'Gostei dos exemplos para adaptar à minha abordagem.',
- 'Os capítulos são fáceis de consultar.',
- 'O glossário facilitou entender os termos.',
- 'Aprendi a perguntar antes de oferecer.',
- 'O material ajudou a organizar meu atendimento.',
- 'Gostei da parte de prospecção e indicações.',
- 'Agora tenho uma base para montar a proposta.',
- 'A divisão em etapas facilita a leitura.',
- 'Gostei das orientações para organizar o perfil.',
- 'Os modelos ajudam a sair da página em branco.',
- 'A parte de rotina me ajudou a planejar o dia.',
- 'Gostei de estudar e adaptar ao meu jeito de falar.'
+const playbookHighlights = [
+  ['NO PLAYBOOK', '65 capítulos organizados em 10 partes para estudar no seu ritmo.'],
+  ['PARA COLOCAR EM PRÁTICA', '10 scripts para adaptar às suas conversas com clientes.'],
+  ['INSTAGRAM', 'Aprenda a conectar conteúdo e novas conversas no Instagram.'],
+  ['PRIMEIRO ATENDIMENTO', 'Saiba quais perguntas fazer antes de apresentar uma proposta.'],
+  ['PROSPECÇÃO', 'Estude formas de encontrar interessados e iniciar conversas.'],
+  ['ROTEIRO DE DIAGNÓSTICO', 'Perguntas para entender o objetivo do cliente.'],
+  ['PROPOSTA COMERCIAL', 'Um modelo para organizar e apresentar sua proposta.'],
+  ['ANTES DE ENVIAR', 'Use o checklist para revisar pontos importantes da proposta.'],
+  ['CONTEÚDO DE 30 DIAS', 'Um plano para organizar os temas do seu Instagram.'],
+  ['GLOSSÁRIO', 'Termos do consórcio para consultar sempre que precisar.'],
+  ['ACOMPANHAMENTO', 'Aprenda a retomar uma conversa com contexto.'],
+  ['ATENDIMENTO', 'Entenda objetivo, prazo e momento antes de oferecer.'],
+  ['FECHAMENTO', 'Conduza os próximos passos com mais clareza.'],
+  ['ROTINA COMERCIAL', 'Organize agenda e indicadores de venda.'],
+  ['PARA INICIANTES', 'Comece pela base e avance para as próximas etapas.'],
+  ['PRESENÇA DIGITAL', 'Organize seu perfil para comunicar o que você faz.'],
+  ['SCRIPTS PRONTOS', 'Tenha um ponto de partida para sua próxima mensagem.'],
+  ['MATERIAL ONLINE', 'Leia e consulte os capítulos pelo celular.'],
+  ['MÓDULO EXTRA', 'Instagram que vende consórcio: 20 aulas em texto.'],
+  ['SEU PRÓXIMO PASSO', 'Faça o diagnóstico gratuito antes de conhecer o Playbook.']
 ];
-// Exemplos fictícios: nunca habilitados fora da prévia local identificada.
-const demoTimestamp = new Date().toISOString();
-const popupItems = demoNames.flatMap((name, i) => [
-  {type:'purchase', name, purchasedAt:demoTimestamp},
-  {type:'review', name:demoNames[(i + 7) % demoNames.length], text:demoReviews[i]}
-]);
 
-if (popupItems.length) {
-  const region = document.createElement('aside');
-  region.className = 'social-proof';
-  region.setAttribute('aria-label', 'Exemplos ilustrativos do Playbook');
-  region.hidden = true;
-  const dismiss = document.createElement('button');
-  dismiss.type = 'button'; dismiss.className = 'social-proof-close';
-  dismiss.setAttribute('aria-label', 'Desativar notificações nesta visita');
-  dismiss.textContent = '×';
-  const live = document.createElement('div');
-  live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite');
-  region.append(dismiss, live); document.body.append(region);
-  let index = 0, nextTimer, hideTimer, stopped = false;
-  const schedule = () => { clearTimeout(nextTimer); if (!stopped && !document.hidden) nextTimer = setTimeout(showNext, 30000); };
-  function showNext(preview = false) {
-    if (stopped || document.hidden) return;
-    // Evita interromper a navegação por teclado ou ocultar um botão de acesso visível.
-    const hasFocus = document.activeElement && document.activeElement !== document.body;
-    const overlappingCTA = [...document.querySelectorAll('.quiz-link')].some(el => {
-      const r = el.getBoundingClientRect();
-      return r.bottom > innerHeight - 180 && r.top < innerHeight && r.left < 340;
-    });
-    if (!preview && (hasFocus || overlappingCTA)) { schedule(); return; }
-    let item;
-    while (index < popupItems.length) {
-      const candidate = popupItems[index++];
-      if (!candidate.name) continue;
-      if (candidate.type === 'review' && candidate.text) { item = candidate; break; }
-      const age = Date.now() - Date.parse(candidate.purchasedAt);
-      if (candidate.type === 'purchase' && age >= 0 && age < 3600000) { item = candidate; break; }
-    }
-    if (!item) return;
-    live.replaceChildren();
-    const label = document.createElement('span'); label.className = 'social-proof-label';
-    label.textContent = 'EXEMPLO ILUSTRATIVO · ' + (item.type === 'review' ? 'FEEDBACK' : 'COMPRA');
-    const message = document.createElement('p');
-    if (item.type === 'review') message.textContent = '“' + item.text + '”';
-    else {
-      const minutes = Math.floor((Date.now() - Date.parse(item.purchasedAt)) / 60000);
-      message.textContent = 'Exemplo: ' + item.name + ' adquiriu o Playbook.';
-    }
-    const person = document.createElement('div'); person.className = 'social-proof-person';
-    const avatar = document.createElement('span'); avatar.className = 'social-proof-avatar'; avatar.setAttribute('aria-hidden', 'true');
-    avatar.textContent = item.name.split(/\s+/).map(n => n[0]).slice(0,2).join('');
-    const name = document.createElement('strong'); name.textContent = item.name;
-    person.append(avatar, name); live.append(label, message, person);
-    region.hidden = false;
-    hideTimer = setTimeout(() => { region.hidden = true; }, 5000);
-    schedule();
-  }
-  if (socialProofDemo) {
-    const previewButton = document.createElement('button');
-    previewButton.className = 'proof-preview-button';
-    previewButton.textContent = 'Prévia: próximo exemplo';
-    previewButton.addEventListener('click', () => { stopped = false; clearTimeout(hideTimer); if (index >= popupItems.length) index = 0; showNext(true); });
-    document.body.append(previewButton);
-  }
-  dismiss.addEventListener('click', () => {
-    stopped = true; clearTimeout(nextTimer); clearTimeout(hideTimer); region.hidden = true;
-  });
-  document.addEventListener('visibilitychange', () => {
-    clearTimeout(nextTimer); clearTimeout(hideTimer); region.hidden = true; schedule();
-  });
-  schedule();
+const proofCard = document.createElement('aside');
+proofCard.className = 'social-proof';
+proofCard.setAttribute('aria-label', 'O que você encontra no Playbook');
+proofCard.hidden = true;
+const proofDismiss = document.createElement('button');
+proofDismiss.type = 'button';
+proofDismiss.className = 'social-proof-close';
+proofDismiss.setAttribute('aria-label', 'Desativar avisos nesta visita');
+proofDismiss.textContent = '×';
+const proofContent = document.createElement('div');
+proofContent.setAttribute('role', 'status');
+proofContent.setAttribute('aria-live', 'polite');
+proofCard.append(proofDismiss, proofContent);
+document.body.append(proofCard);
+let proofIndex = 0;
+let proofNextTimer;
+let proofHideTimer;
+let proofStopped = false;
+function scheduleProof() {
+  clearTimeout(proofNextTimer);
+  if (!proofStopped && !document.hidden && proofIndex < playbookHighlights.length)
+    proofNextTimer = setTimeout(showProof, 30000);
 }
+function showProof() {
+  if (proofStopped || document.hidden) return;
+  const hasFocus = document.activeElement && document.activeElement !== document.body;
+  const coversButton = [...document.querySelectorAll('.quiz-link')].some(el => {
+    const r = el.getBoundingClientRect();
+    return r.bottom > innerHeight - 180 && r.top < innerHeight && r.left < 340;
+  });
+  if (hasFocus || coversButton) { scheduleProof(); return; }
+  const [heading, message] = playbookHighlights[proofIndex++];
+  const label = document.createElement('span');
+  label.className = 'social-proof-label';
+  label.textContent = heading;
+  const text = document.createElement('p');
+  text.textContent = message;
+  proofContent.replaceChildren(label, text);
+  proofCard.hidden = false;
+  clearTimeout(proofHideTimer);
+  proofHideTimer = setTimeout(() => { proofCard.hidden = true; }, 5000);
+  scheduleProof();
+}
+proofDismiss.addEventListener('click', () => {
+  proofStopped = true;
+  clearTimeout(proofNextTimer);
+  clearTimeout(proofHideTimer);
+  proofCard.hidden = true;
+});
+document.addEventListener('visibilitychange', () => {
+  clearTimeout(proofNextTimer);
+  clearTimeout(proofHideTimer);
+  proofCard.hidden = true;
+  scheduleProof();
+});
+scheduleProof();
