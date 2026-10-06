@@ -60,13 +60,13 @@ function scheduleProof() {
     proofNextTimer = setTimeout(showProof, 30000);
 }
 function showProof() {
-  if (proofStopped || document.hidden) return;
+  if (proofStopped || document.hidden || proofIndex >= playbookHighlights.length) return;
   const hasFocus = document.activeElement && document.activeElement !== document.body;
   const coversButton = [...document.querySelectorAll('.quiz-link')].some(el => {
     const r = el.getBoundingClientRect();
     return r.bottom > innerHeight - 180 && r.top < innerHeight && r.left < 340;
   });
-  if (hasFocus || coversButton) { scheduleProof(); return; }
+  proofCard.classList.toggle('social-proof--top', coversButton);
   const [heading, message] = playbookHighlights[proofIndex++];
   const label = document.createElement('span');
   label.className = 'social-proof-label';

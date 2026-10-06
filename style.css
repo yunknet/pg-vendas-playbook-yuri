@@ -136,3 +136,4 @@
 .social-proof-person{gap:7px;font-size:.72rem}
 .social-proof-avatar{width:25px;height:25px;font-size:.6rem}
 .social-proof-close{width:44px;height:44px;top:0;right:0;font-size:1.2rem}
+.social-proof.social-proof--top{top:max(12px,env(safe-area-inset-top));bottom:auto}
