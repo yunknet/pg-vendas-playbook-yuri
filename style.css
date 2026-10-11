@@ -137,3 +137,13 @@
 .social-proof-avatar{width:25px;height:25px;font-size:.6rem}
 .social-proof-close{width:44px;height:44px;top:0;right:0;font-size:1.2rem}
 .social-proof.social-proof--top{top:max(12px,env(safe-area-inset-top));bottom:auto}
+
+/* Slightly larger copy and a single-column diagnosis. */
+.sales-page .hero .intro{font-size:1.2rem}
+.standalone .result-layout{grid-template-columns:1fr;max-width:760px}
+.standalone .result-description{font-size:1.125rem}
+.confetti-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:100}
+.confetti-layer i{position:absolute;top:-20px;width:8px;height:13px;animation:confetti-fall 2.8s ease-in forwards}
+@keyframes confetti-fall{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}80%{opacity:1}100%{transform:translate3d(var(--drift),105vh,0) rotate(var(--turn));opacity:0}}
+@media(max-width:800px){.sales-page .hero .intro{font-size:1.1rem}}
+@media(prefers-reduced-motion:reduce){.confetti-layer{display:none}}

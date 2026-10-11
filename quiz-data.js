@@ -3,7 +3,6 @@ const questions=[
  {title:'Como chegam suas oportunidades hoje?',options:[['Ainda não sei onde encontrar clientes.','prospecting',3],['Dependo quase só de indicações.','prospecting',2],['Publico nas redes, mas gero poucas conversas.','digital',3],['Uso mais de um canal com regularidade.','advanced',1]]},
  {title:'Quando alguém pede uma simulação, o que você faz?',options:[['Envio uma tabela ou parcela logo de início.','diagnosis',3],['Faço algumas perguntas, mas sem roteiro.','diagnosis',2],['Entendo objetivo, prazo e capacidade antes.','advanced',1],['Ainda não sei como conduzir esse atendimento.','diagnosis',3]]},
  {title:'O cliente diz “vou pensar”. Qual é o seu próximo passo?',options:[['Espero que ele volte a falar comigo.','followup',3],['Mando mensagem quando lembro.','followup',2],['Registro a dúvida e combino uma retomada.','advanced',1],['Tenho dificuldade para entender o que travou.','diagnosis',2]]},
- {title:'Como você organiza sua rotina comercial?',options:[['Faço o que aparece no dia.','routine',3],['Tenho anotações, mas não uma agenda consistente.','routine',2],['Reservo tempo para prospectar e acompanhar.','advanced',1],['Acompanho atividades e reviso indicadores.','advanced',2]]},
  {title:'O que você mais quer desenvolver agora?',options:[['Encontrar clientes e gerar conversas.','prospecting',4],['Atender e apresentar propostas com clareza.','diagnosis',4],['Acompanhar oportunidades e organizar a rotina.','routine',4],['Usar o Instagram para atrair oportunidades.','digital',4]]}
 ];
 const profiles={
@@ -16,4 +15,4 @@ const profiles={
  advanced:{title:'Seu próximo passo: aperfeiçoar o processo.',body:'Você já relata hábitos de organização e atendimento consultivo. O material pode apoiar a revisão dos pontos que ainda precisam de mais consistência.',action:'Revise seu acompanhamento de oportunidades e escolha um indicador para observar. Use os modelos para avaliar o que pode ficar mais claro.',parts:'Partes 5, 6 e 10 · Propostas, acompanhamento e rotina'}
 };
 
-function calculateProfile(answers){const scores=Object.fromEntries(Object.keys(profiles).map(k=>[k,0]));answers.forEach((a,i)=>{const [,key,weight]=questions[i].options[a];scores[key]+=weight});const preferred=questions[5].options[answers[5]][1];return Object.keys(scores).sort((a,b)=>scores[b]-scores[a]||(a===preferred?-1:b===preferred?1:0))[0]}
+function calculateProfile(answers){const scores=Object.fromEntries(Object.keys(profiles).map(k=>[k,0]));answers.forEach((a,i)=>{const [,key,weight]=questions[i].options[a];scores[key]+=weight});const preferred=questions[questions.length-1].options[answers[questions.length-1]][1];return Object.keys(scores).sort((a,b)=>scores[b]-scores[a]||(a===preferred?-1:b===preferred?1:0))[0]}
