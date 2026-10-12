@@ -194,3 +194,9 @@ body.diagnosis-page{background:var(--navy);color:var(--white);min-height:100vh}
 .sales-page #hero-title>span{display:block}
 .sales-page #hero-title .hero-title-gold{color:var(--gold)}
 .sales-page #hero-title .hero-title-white{color:var(--white)}
+.sales-page .hero{padding-top:16px}
+.sales-page .hero-copy{padding-top:8px}
+@media(max-width:800px){
+ .sales-page .hero{padding-top:6px}
+ .sales-page .hero-copy{padding-top:12px}
+}
