@@ -178,14 +178,12 @@ body.diagnosis-page{background:var(--navy);color:var(--white);min-height:100vh}
 .organic-flow span{color:var(--gold);font-size:.75rem;letter-spacing:1px}
 .organic-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .organic-gallery figure{margin:0;min-width:0;background:var(--deep);border:1px solid #ffffff25;border-radius:8px;overflow:hidden}
-.organic-gallery a{display:block;background:#000}
 .organic-gallery img{display:block;width:100%;height:auto}
 .organic-gallery figcaption{padding:18px;font-size:.88rem;line-height:1.5;color:#d4dfe5}
 .organic-context{font-size:.78rem;color:#b6c5ce;margin-top:16px}
 .organic-close{max-width:740px;margin-top:36px}
 .organic-close h3{font-size:1.6rem;line-height:1.3}
 .organic-close .button{margin-top:8px}
-.organic-swipe{font-size:.8rem;color:#b6c5ce}
 @media(max-width:700px){
  .organic-flow{flex-direction:column;gap:16px}
  .organic-gallery{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:85%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
