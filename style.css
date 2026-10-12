@@ -190,3 +190,7 @@ body.diagnosis-page{background:var(--navy);color:var(--white);min-height:100vh}
  .organic-gallery figure{scroll-snap-align:start}
  .organic-close .button{width:100%}
 }
+
+.sales-page #hero-title>span{display:block}
+.sales-page #hero-title .hero-title-gold{color:var(--gold)}
+.sales-page #hero-title .hero-title-white{color:var(--white)}
