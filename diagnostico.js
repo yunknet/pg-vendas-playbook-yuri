@@ -1,4 +1,13 @@
 function celebrateCompletion() {
+  if (document.visibilityState === 'hidden') {
+    const onVisible = () => {
+      if (document.visibilityState !== 'visible') return;
+      document.removeEventListener('visibilitychange', onVisible);
+      celebrateCompletion();
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    return;
+  }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const layer = document.createElement('div');
   layer.className = 'confetti-layer';
@@ -6,11 +15,11 @@ function celebrateCompletion() {
   const colors = ['#e5b455', '#ffffff', '#218ba0', '#b48025'];
   for (let i = 0; i < 55; i++) {
     const piece = document.createElement('i');
-    piece.style.cssText = `left:${Math.random()*100}%;background:${colors[i%colors.length]};--drift:${Math.random()*160-80}px;--turn:${Math.random()*900-450}deg;animation-delay:${Math.random()*0.65}s;animation-duration:${2.1+Math.random()*0.8}s`;
+    piece.style.cssText = `left:${Math.random()*100}%;background:${colors[i%colors.length]};--drift:${Math.random()*160-80}px;--turn:${Math.random()*900-450}deg;animation-delay:${Math.random()*1.5}s;animation-duration:${3.5+Math.random()}s`;
     layer.append(piece);
   }
   document.body.append(layer);
-  setTimeout(() => layer.remove(), 3800);
+  setTimeout(() => layer.remove(), 6500);
 }
 
 function renderDiagnosis(container, answers) {
