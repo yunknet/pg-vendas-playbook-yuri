@@ -78,6 +78,7 @@
 .sales-page .hero h1 em{display:block}
 .sales-page .hero-copy{padding:20px 0 48px}
 .sales-page .hero-proof{color:#c2cfd7;font-size:.88rem;max-width:420px;margin-bottom:24px}
+.sales-page .hero-proof .highlight{color:var(--gold)}
 .sales-page .hero .intro{margin-bottom:18px;max-width:540px}
 .sales-page .hero .portrait{min-height:600px}
 .sales-page .portrait-caption p{max-width:280px;font-size:1.1rem}
@@ -147,3 +148,21 @@
 @keyframes confetti-fall{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}80%{opacity:1}100%{transform:translate3d(var(--drift),105vh,0) rotate(var(--turn));opacity:0}}
 @media(max-width:800px){.sales-page .hero .intro{font-size:1.1rem}}
 @media(prefers-reduced-motion:reduce){.confetti-layer{display:none}}
+
+/* Diagnóstico com a mesma paleta da página de vendas. */
+body.diagnosis-page{background:var(--navy);color:var(--white);min-height:100vh}
+.diagnosis-page .topline{color:var(--gold);border-color:#ffffff25}
+.diagnosis-page .eyebrow,.diagnosis-page .result-kicker{color:var(--gold)}
+.diagnosis-page .completed,.diagnosis-page .result-note,.diagnosis-page .access-note{color:#b6c5ce}
+.diagnosis-page .result-description{color:#d4dfe5}
+.diagnosis-page .result-prefix{display:block;font-size:.65em;font-weight:500;color:#d4dfe5;margin-bottom:12px;letter-spacing:-.5px}
+.diagnosis-page .result-highlight{display:block;color:var(--gold);font-weight:700;line-height:1.15}
+.diagnosis-offer{margin-top:30px;max-width:440px}
+.offer-timer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 20px;border:1px solid #e5b45555;border-radius:6px;background:var(--deep);color:#d4dfe5}
+.offer-timer time{font-size:1.8rem;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.diagnosis-price{margin:24px 0 18px;line-height:1.2}
+.diagnosis-price>span{display:block;color:#b6c5ce;font-size:1rem;margin-bottom:8px}
+.diagnosis-price>strong{display:block;color:var(--gold);font-size:clamp(2.8rem,8vw,3.6rem);font-family:Manrope,Arial,sans-serif;letter-spacing:-1px}
+.diagnosis-page .result-actions{margin-top:0}
+.diagnosis-page .result-actions .button{width:100%;white-space:normal;line-height:1.4}
+.quiz-option:disabled{cursor:default}
