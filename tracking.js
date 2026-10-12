@@ -13,10 +13,35 @@ function withCampaign(url) {
 }
 
 window.yuriWithCampaign = withCampaign;
+// Count each milestone once per page load, without quiz answers or buyer data.
+const recordedMilestones = new Set();
+window.yuriTrack = (name, parameters = {}) => {
+  const key = name + ':' + (parameters.button_position || parameters.question_number || '');
+  if (recordedMilestones.has(key)) return;
+  recordedMilestones.add(key);
+  try { window.fbq?.('trackCustom', name, parameters); } catch (_) { /* Navigation must remain available. */ }
+};
+window.yuriGoToCheckout = (url) => {
+  window.yuriTrack('CheckoutClick');
+  // Briefly allow the browser event to leave before external navigation.
+  setTimeout(() => window.location.assign(withCampaign(url)), 200);
+};
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a.quiz-link, a[href="quiz.html"]').forEach((link) => {
     link.href = withCampaign(link.href);
+    if (document.body.classList.contains('sales-page')) {
+      link.addEventListener('click', (event) => {
+        window.yuriTrack('LandingCtaClick', {
+          button_position: link.closest('.hero') ? 'hero' : 'final'
+        });
+        if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && event.button === 0) {
+          event.preventDefault();
+          setTimeout(() => window.location.assign(link.href), 200);
+        }
+      });
+    }
   });
+  if (document.body.classList.contains('sales-page')) window.yuriTrack('LandingPageView');
 });
 
 !function(f,b,e,v,n,t,s)

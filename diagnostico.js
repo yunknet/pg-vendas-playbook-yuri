@@ -20,10 +20,11 @@ function renderDiagnosis(container, answers) {
   container.innerHTML = `<div class="completed">${questions.length} de ${questions.length} perguntas respondidas</div><p class="eyebrow">SEU DIAGNÓSTICO COMERCIAL</p><div class="result-layout"><div><h1>${p.title}</h1><p class="result-description">${p.body}</p><p class="result-kicker">Sua prioridade: ${selectedGoal}</p></div></div><div class="result-actions"><button class="button" id="result-access">Adquirir agora 🚀</button></div><p class="access-note" id="access-note" hidden role="status">O acesso por esta página estará disponível em breve.</p><p class="result-note">Orientação educativa baseada nas suas respostas. O resultado indica uma prioridade de estudo, sem medir ou garantir seu desempenho de vendas.</p>`;
   document.getElementById('result-access').addEventListener('click', () => {
     const url = window.YURI_ACCESS_URL;
-    if (url) window.location.assign(window.yuriWithCampaign(url));
+    if (url) window.yuriGoToCheckout(url);
     else document.getElementById('access-note').hidden = false;
   });
   celebrateCompletion();
+  window.yuriTrack?.('DiagnosisView');
 }
 const raw = new URLSearchParams(window.location.hash.slice(1)).get('respostas') || '';
 const container = document.getElementById('result-content');
