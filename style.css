@@ -257,3 +257,14 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .quiz-page .quiz-option:focus-visible{outline:3px solid #f9d991;outline-offset:4px}
 @media(max-width:600px){.quiz-page .quiz-option,.quiz-page .quiz-option[aria-pressed=true]{padding:15px 14px;gap:12px}.sales-page .hero-centered #hero-title{font-size:clamp(1.85rem,6.5vw,2.6rem)}}
 @media(prefers-reduced-motion:reduce){.quiz-page .quiz-option{transition:none}}
+
+/* Product preview and featured roiLead bonus. */
+.platform-preview{padding:0 6% 48px;text-align:center;background:var(--navy);color:var(--white)}
+.platform-preview h2{font-size:clamp(1.7rem,3vw,2.6rem);margin:0 0 16px;color:var(--white)}
+.platform-preview>p:not(.eyebrow){max-width:600px;margin:0 auto 26px;color:var(--muted)}
+.platform-preview figure{width:100%;max-width:880px;margin:0 auto}
+.platform-preview img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #426070;box-shadow:0 18px 48px #0004}
+.diagnosis-price-row .bonus-highlight{padding:20px 24px;margin-top:10px;background:#173e54;border:2px solid var(--gold);border-radius:12px;box-shadow:0 6px 24px #0003;color:#ffe2a3;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:800;line-height:1.5}
+.diagnosis-price-row .bonus-highlight strong{font:inherit;letter-spacing:normal;color:#fff}
+.bonus-description .roilead-name{color:var(--gold);font-weight:800}
+@media(max-width:600px){.platform-preview{padding:0 5% 36px}.platform-preview img{border-radius:10px}.diagnosis-price-row .bonus-highlight{padding:16px;font-size:1.05rem}}
