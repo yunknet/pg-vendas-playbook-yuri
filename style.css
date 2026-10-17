@@ -204,10 +204,10 @@ body.diagnosis-page{background:var(--navy);color:var(--white);min-height:100vh}
  .sales-page .hero-copy{padding-top:12px}
 }
 /* Centered sales opening and consistent navy quiz palette. */
-.sales-page .hero.hero-centered{display:block;padding:42px 6% 64px;text-align:center;min-height:0}
+.sales-page .hero.hero-centered{display:block;padding:42px 6% 28px;text-align:center;min-height:0}
 .hero-centered .hero-copy{max-width:960px;margin:0 auto;padding:0}
 .hero-logo{font:48px Georgia,serif;color:var(--gold);margin-bottom:28px}
-.sales-page .hero-centered #hero-title{max-width:960px;margin:0 auto 26px}
+.sales-page .hero-centered #hero-title{max-width:960px;margin:0 auto}
 .sales-page .hero-centered .intro{max-width:650px;margin:0 auto 20px}
 .sales-page .hero-centered .hero-proof{max-width:580px;margin:0 auto 24px}
 .hero-centered .offer-price{margin:0 auto 24px}
@@ -234,7 +234,7 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .quiz-page progress::-moz-progress-bar{background:var(--gold)}
 .quiz-page .analysis-fill{background:var(--gold)}
 @media(max-width:600px){
- .sales-page .hero.hero-centered{padding:28px 6% 44px}
+ .sales-page .hero.hero-centered{padding:28px 6% 24px}
  .hero-logo{font-size:38px;margin-bottom:22px}
  .sales-page .hero-centered #hero-title{font-size:clamp(1.9rem,7.5vw,2.8rem);line-height:1.16}
  .hero-centered .button,.landing-offer .button{max-width:100%;white-space:normal}
@@ -260,7 +260,9 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 
 /* Product preview and featured roiLead bonus. */
 .platform-preview{padding:0 6% 48px;text-align:center;background:var(--navy);color:var(--white)}
-.platform-preview h2{font-size:clamp(1.7rem,3vw,2.6rem);margin:0 0 16px;color:var(--white)}
+.platform-preview h2{font-size:clamp(1.7rem,3vw,2.6rem);max-width:800px;margin:0 auto 16px;color:var(--white)}
+.platform-preview .eyebrow{margin:0 0 12px;color:var(--gold)}
+.platform-preview h2 .highlight{color:var(--gold)}
 .platform-preview>p:not(.eyebrow){max-width:600px;margin:0 auto 26px;color:var(--muted)}
 .platform-preview figure{width:100%;max-width:880px;margin:0 auto}
 .platform-preview img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #426070;box-shadow:0 18px 48px #0004}
