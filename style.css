@@ -260,7 +260,7 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 
 /* Product preview and featured roiLead bonus. */
 .platform-preview{padding:0 6% 48px;text-align:center;background:var(--navy);color:var(--white)}
-.platform-preview h2{font-size:clamp(1.65rem,3vw,2.6rem);max-width:800px;margin:0 auto 12px;color:var(--gold);line-height:1.2;font-weight:800}
+.platform-preview h2{font-size:clamp(1.45rem,2.7vw,2.35rem);max-width:800px;margin:0 auto 12px;color:var(--gold);line-height:1.2;font-weight:800}
 .platform-preview>p.platform-subtitle{font-size:clamp(1rem,1.7vw,1.25rem);max-width:700px;margin:0 auto 18px;color:var(--white);line-height:1.5}
 .platform-preview .platform-subtitle .highlight{color:var(--gold)}
 .platform-preview>p:not(.eyebrow){max-width:600px;margin:0 auto 26px;color:var(--muted)}
@@ -275,3 +275,4 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .platform-preview .quiz-link{margin-top:26px;max-width:100%;white-space:normal}
 .organic-proof h2 .highlight{color:var(--gold)}
 .sales-page #hero-title .hero-kicker{font-size:clamp(1.65rem,3vw,2.6rem);line-height:1.2;font-weight:800}
+@media(max-width:600px){.sales-page #hero-title .hero-kicker{font-size:clamp(1rem,4.7vw,1.45rem);letter-spacing:-.02em;white-space:nowrap}}
