@@ -270,3 +270,4 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 @media(max-width:600px){.platform-preview{padding:0 5% 36px}.platform-preview img{border-radius:10px}.diagnosis-price-row .bonus-highlight{padding:16px;font-size:1.05rem}}
 .bonus-access{color:var(--white);font-size:.95rem;font-weight:700;margin:-14px auto 24px;text-align:center}
 .quiz-page #quiz-helper,.quiz-page #analysis-panel .eyebrow,.diagnosis-page #result-content>.eyebrow,.diagnosis-page .empty>.eyebrow{display:none}
+.platform-preview .quiz-link{margin-top:26px;max-width:100%;white-space:normal}
