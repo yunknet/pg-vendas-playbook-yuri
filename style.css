@@ -274,3 +274,4 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .quiz-page #quiz-helper,.quiz-page #analysis-panel .eyebrow,.diagnosis-page #result-content>.eyebrow,.diagnosis-page .empty>.eyebrow{display:none}
 .platform-preview .quiz-link{margin-top:26px;max-width:100%;white-space:normal}
 .organic-proof h2 .highlight{color:var(--gold)}
+.sales-page #hero-title .hero-kicker{font-size:clamp(1.65rem,3vw,2.6rem);line-height:1.2;font-weight:800}
