@@ -276,3 +276,11 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .organic-proof h2 .highlight{color:var(--gold)}
 .sales-page #hero-title .hero-kicker{font-size:clamp(1.65rem,3vw,2.6rem);line-height:1.2;font-weight:800}
 @media(max-width:600px){.sales-page #hero-title .hero-kicker{font-size:clamp(1rem,4.7vw,1.45rem);letter-spacing:-.02em;white-space:nowrap}}
+
+/* Raised call-to-action buttons with clear press feedback. */
+.sales-page .button,.diagnosis-page .button{background:linear-gradient(180deg,#ffda80 0%,#e5b455 100%);color:#061d2b;border:2px solid #ffe6aa;border-bottom:5px solid #aa751e;border-radius:12px;min-height:58px;padding:17px 26px;font-weight:800;text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #684814,0 10px 22px #0005;transition:background .15s,transform .15s,box-shadow .15s;touch-action:manipulation}
+@media(hover:hover){.sales-page .button:hover,.diagnosis-page .button:hover{background:linear-gradient(180deg,#ffe7a6 0%,#f1c86d 100%);transform:translateY(-2px);box-shadow:0 7px 0 #684814,0 14px 26px #0006}}
+.sales-page .button:active,.diagnosis-page .button:active{transform:translateY(4px);box-shadow:0 1px 0 #684814,0 3px 8px #0004}
+.sales-page .button:focus-visible,.diagnosis-page .button:focus-visible{outline:3px solid #fff;outline-offset:6px}
+@media(max-width:600px){.sales-page .button{width:100%;max-width:420px;padding:17px 18px;font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.sales-page .button,.diagnosis-page .button{transition:none}}
