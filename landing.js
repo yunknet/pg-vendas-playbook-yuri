@@ -14,7 +14,7 @@ const list=document.getElementById('chapters');
 chapters.forEach(([title,range,description],i)=>{const d=document.createElement('details');const s=document.createElement('summary');const n=document.createElement('span');n.className='chapter-number';n.textContent=String(i+1).padStart(2,'0');s.append(n,document.createTextNode(title));const p=document.createElement('p');p.textContent=description;const r=document.createElement('span');r.className='chapter-range';r.textContent='CAPÍTULOS '+range;p.append(r);d.append(s,p);list.append(d)});
 
 const playbookHighlights = [
-  ['NO PLAYBOOK', '65 capítulos organizados em 10 partes para estudar no seu ritmo.'],
+  ['NO ELEVA CONSÓRCIO', '65 capítulos organizados em 10 partes para estudar no seu ritmo.'],
   ['PARA COLOCAR EM PRÁTICA', '10 scripts para adaptar às suas conversas com clientes.'],
   ['INSTAGRAM', 'Aprenda a conectar conteúdo e novas conversas no Instagram.'],
   ['PRIMEIRO ATENDIMENTO', 'Saiba quais perguntas fazer antes de apresentar uma proposta.'],
@@ -33,12 +33,12 @@ const playbookHighlights = [
   ['SCRIPTS PRONTOS', 'Tenha um ponto de partida para sua próxima mensagem.'],
   ['MATERIAL ONLINE', 'Leia e consulte os capítulos pelo celular.'],
   ['MÓDULO EXTRA', 'Instagram que vende consórcio: 20 aulas em texto.'],
-  ['SEU PRÓXIMO PASSO', 'Faça o diagnóstico gratuito antes de conhecer o Playbook.']
+  ['SEU PRÓXIMO PASSO', 'Faça o diagnóstico gratuito antes de conhecer o Eleva Consórcio.']
 ];
 
 const proofCard = document.createElement('aside');
 proofCard.className = 'social-proof';
-proofCard.setAttribute('aria-label', 'O que você encontra no Playbook');
+proofCard.setAttribute('aria-label', 'O que você encontra no Eleva Consórcio');
 proofCard.hidden = true;
 const proofDismiss = document.createElement('button');
 proofDismiss.type = 'button';
