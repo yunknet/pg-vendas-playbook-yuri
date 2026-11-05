@@ -288,7 +288,20 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 /* Eleva sales sections; isolated from the quiz. */
 .sales-page .hero.hero-centered{padding-block:clamp(44px,7vw,96px) clamp(44px,6vw,80px)}
 .sales-page .hero-centered #hero-title{max-width:900px;text-wrap:balance;letter-spacing:-.045em}
-.sales-page .hero-centered .eyebrow{letter-spacing:.04em;font-size:.875rem}
+.sales-page .hero-centered .eyebrow{
+ display:inline-block;
+ max-width:100%;
+ padding:10px 24px;
+ border:1px solid #e5b45566;
+ border-radius:999px;
+ background:#e5b45508;
+ color:#fff;
+ font-size:.95rem;
+ font-weight:700;
+ line-height:1.4;
+ letter-spacing:0;
+ text-wrap:balance;
+}
 .sales-page .eleva-benefits{list-style:none;padding:22px 0 0;margin:32px auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px;max-width:720px;text-align:left;border-top:1px solid #ffffff26}
 .sales-page .eleva-benefits li{display:flex;align-items:flex-start;gap:12px}
 .sales-page .eleva-benefits li>span{display:grid;place-items:center;color:var(--gold);font-size:1rem;flex:0 0 26px;height:26px;border-radius:50%;background:#e5b4551a}
@@ -310,6 +323,6 @@ body.quiz-page{background:var(--navy);color:var(--white);min-height:100vh}
 .sales-page .eleva-benefits{max-width:420px;gap:13px;margin-block:24px}
 .sales-page .eleva-cards article{padding:22px}
 .sales-page .hero-centered #hero-title{letter-spacing:-.8px;font-size:clamp(1.85rem,7vw,2.6rem)}
-.sales-page .hero .eyebrow{font-size:.8rem;letter-spacing:.7px}
+.sales-page .hero .eyebrow{font-size:.8rem;letter-spacing:0;padding:10px 16px}
 .sales-page .eleva-comparison h2,.sales-page .eleva-audience h2{font-size:2rem;letter-spacing:-.7px}
 }
