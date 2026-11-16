@@ -22,25 +22,28 @@ function celebrateCompletion() {
   setTimeout(() => layer.remove(), 6500);
 }
 
-function renderDiagnosis(container, answers) {
-  const p = profiles[calculateProfile(answers)];
+function renderDiagnosis(container, answers, direct = false) {
+  const p = direct ? profiles.prospecting : profiles[calculateProfile(answers)];
   const last = questions.length - 1;
-  const selectedGoal = questions[last].options[answers[last]][0];
-  container.innerHTML = `<div class="completed">${questions.length} de ${questions.length} perguntas respondidas</div><p class="eyebrow">SEU DIAGNÓSTICO COMERCIAL</p><div class="result-layout"><div><h1><span class="result-prefix">Seu próximo passo:</span><strong class="result-highlight">${p.title.slice(p.title.indexOf(':') + 1).trim()}</strong></h1><p class="result-description">${p.body}</p><p class="result-kicker">Sua prioridade: ${selectedGoal}</p></div></div><div class="diagnosis-offer"><div class="offer-timer"><span>Oferta com Bônus 🎁</span><time id="offer-countdown" role="timer" aria-label="Tempo restante">15:00</time></div><p class="diagnosis-price"><span>De <s>R$ 97,00</s> por</span><span class="diagnosis-price-row"><strong>R$ 37,90</strong><small class="bonus-highlight">+ Bônus - Acesso Gratuito (trial) à Plataforma <strong>roiLead</strong>.</small></span></p><p class="bonus-description">O sistema <strong class="roilead-name">roiLead</strong> é uma plataforma que te entrega Leads (clientes) segmentados e qualificados para prospecção.</p><p class="bonus-access">Você receberá o acesso pelo e-mail.</p><div class="result-actions"><button class="button" id="result-access">QUERO MEU ACESSO AGORA</button></div></div><p class="access-note" id="access-note" hidden role="status">O acesso por esta página estará disponível em breve.</p>`;
+  const selectedGoal = direct ? questions[last].options[0][0] : questions[last].options[answers[last]][0];
+  const description = direct ? "Amplie e organize suas fontes de oportunidades. Definir canais e uma rotina ajuda a sair da dependência de contatos ocasionais." : p.body;
+  container.innerHTML = `${direct ? '<p class="eyebrow">CONHEÇA O ELEVA CONSÓRCIO</p>' : `<div class="completed">${questions.length} de ${questions.length} perguntas respondidas</div><p class="eyebrow">SEU DIAGNÓSTICO COMERCIAL</p>`}<div class="result-layout"><div><h1><span class="result-prefix">Seu próximo passo:</span><strong class="result-highlight">${p.title.slice(p.title.indexOf(':') + 1).trim()}</strong></h1><p class="result-description">${description}</p><p class="result-kicker">Sua prioridade: ${selectedGoal}</p></div></div><div class="diagnosis-offer"><div class="offer-timer"><span>Oferta com Bônus 🎁</span><time id="offer-countdown" role="timer" aria-label="Tempo restante">15:00</time></div><p class="diagnosis-price"><span>De <s>R$ 97,00</s> por</span><span class="diagnosis-price-row"><strong>R$ 37,90</strong><small class="bonus-highlight">+ Bônus - Acesso Gratuito (trial) à Plataforma <strong>roiLead</strong>.</small></span></p><p class="bonus-description">O sistema <strong class="roilead-name">roiLead</strong> é uma plataforma que te entrega Leads (clientes) segmentados e qualificados para prospecção.</p><p class="bonus-access">Você receberá o acesso pelo e-mail.</p><div class="result-actions"><button class="button" id="result-access">QUERO MEU ACESSO AGORA</button></div></div><p class="access-note" id="access-note" hidden role="status">O acesso por esta página estará disponível em breve.</p>`;
   document.getElementById('result-access').addEventListener('click', () => {
     const url = window.YURI_ACCESS_URL;
     if (url) window.yuriGoToCheckout(url);
     else document.getElementById('access-note').hidden = false;
   });
   startCountdown();
-  celebrateCompletion();
-  window.yuriTrack?.('DiagnosisView');
+  if (!direct) celebrateCompletion();
+  window.yuriTrack?.(direct ? 'OfferView' : 'DiagnosisView');
 }
 const raw = new URLSearchParams(window.location.hash.slice(1)).get('respostas') || '';
 const container = document.getElementById('result-content');
 // Keep previously shared six-question results usable after removing the routine question.
 const normalized = /^[0-3]{6}$/.test(raw) ? raw.slice(0, 4) + raw.slice(5) : raw;
-if (new RegExp(`^[0-3]{${questions.length}}$`).test(normalized)) {
+if (new URLSearchParams(window.location.search).get('oferta') === 'direta') {
+  renderDiagnosis(container, null, true);
+} else if (new RegExp(`^[0-3]{${questions.length}}$`).test(normalized)) {
   renderDiagnosis(container, normalized.split('').map(Number));
 } else {
   container.innerHTML = '<section class="empty"><p class="eyebrow">SEU DIAGNÓSTICO COMERCIAL</p><h1>Vamos conhecer seu momento?</h1><p>Responda às cinco perguntas para receber uma orientação baseada na sua rotina.</p><a class="button" href="quiz.html">Começar diagnóstico</a></section>';
